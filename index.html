@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrology System</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color:white;
+    text-align:center;
+    padding-top:50px;
+}
+
+.container{
+    background: rgba(255,255,255,0.1);
+    width:350px;
+    margin:auto;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+input, button{
+    width:80%;
+    padding:12px;
+    margin:8px;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    background:#ff4d6d;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e63956;
+}
+
+#result{
+    margin-top:20px;
+    text-align:left;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🔮 Astrology System</h1>
+
+    <input type="text" id="name" placeholder="Enter your name"><br>
+    <input type="number" id="day" placeholder="Birth day"><br>
+    <input type="number" id="month" placeholder="Birth month"><br>
+
+    <button onclick="generateProfile()">Generate Profile</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function getZodiac(day, month) {
+    if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return "Aquarius";
+    if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return "Pisces";
+    if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return "Aries";
+    if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return "Taurus";
+    if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return "Gemini";
+    if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return "Cancer";
+    if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return "Leo";
+    if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return "Virgo";
+    if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return "Libra";
+    if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return "Scorpio";
+    if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return "Sagittarius";
+    return "Capricorn";
+}
+
+function generateProfile() {
+    let name = document.getElementById("name").value;
+    let day = parseInt(document.getElementById("day").value);
+    let month = parseInt(document.getElementById("month").value);
+
+    if (!name⠞⠺⠟⠞⠞⠺⠟⠟!month) {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    let zodiac = getZodiac(day, month);
+
+    let result = `
+        <h3>Hello ${name} ✨</h3>
+        <p><strong>Your Zodiac:</strong> ${zodiac}</p>
+        <p><strong>Today's Advice:</strong> Trust your intuition today.</p>
+        <p><strong>Lucky Number:</strong> ${Math.floor(Math.random()*100)}</p>
+    `;
+
+    document.getElementById("result").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
