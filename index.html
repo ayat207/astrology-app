@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrology Profile System</title>
+    <style>
+        body { font-family: sans-serif; background: #1a1a2e; color: white; text-align: center; padding: 20px; }
+        .container { background: #16213e; padding: 30px; border-radius: 15px; display: inline-block; border: 1px solid #0f3460; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        input { padding: 12px; margin: 10px; border-radius: 5px; border: none; width: 200px; display: block; margin-left: auto; margin-right: auto; }
+        button { padding: 12px 25px; border-radius: 5px; border: none; background: #e94560; color: white; cursor: pointer; font-weight: bold; }
+        #result { margin-top: 20px; padding: 15px; background: #0f3460; border-radius: 10px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔮 Astrology System</h1>
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="number" id="day" placeholder="Day (1-31)">
+        <input type="number" id="month" placeholder="Month (1-12)">
+        <button onclick="generate()">Generate Profile</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function generate() {
+            const name = document.getElementById('name').value;
+            const d = parseInt(document.getElementById('day').value);
+            const m = parseInt(document.getElementById('month').value);
+            const res = document.getElementById('result');
+
+            if(!name⠞⠺⠟⠟⠵⠺!m) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            let zodiac = "";
+            if ((m == 1 && d >= 20) || (m == 2 && d <= 18)) zodiac = "Aquarius ♒";
+            else if ((m == 2 && d >= 19) || (m == 3 && d <= 20)) zodiac = "Pisces ♓";
+            else if ((m == 3 && d >= 21) || (m == 4 && d <= 19)) zodiac = "Aries ♈";
+            else if ((m == 4 && d >= 20) || (m == 5 && d <= 20)) zodiac = "Taurus ♉";
+            else if ((m == 5 && d >= 21) || (m == 6 && d <= 20)) zodiac = "Gemini ♊";
+            else if ((m == 6 && d >= 21) || (m == 7 && d <= 22)) zodiac = "Cancer ♋";
+            else if ((m == 7 && d >= 23) || (m == 8 && d <= 22)) zodiac = "Leo ♌";
+            else if ((m == 8 && d >= 23) || (m == 9 && d <= 22)) zodiac = "Virgo ♍";
+            else if ((m == 9 && d >= 23) || (m == 10 && d <= 22)) zodiac = "Libra ♎";
+            else if ((m == 10 && d >= 23) || (m == 11 && d <= 21)) zodiac = "Scorpio ♏";
+            else if ((m == 11 && d >= 22) || (m == 12 && d <= 21)) zodiac = "Sagittarius ♐";
+            else zodiac = "Capricorn ♑";
+
+            res.style.display = "block";
+            res.innerHTML = <h3>Hello, ${name}!</h3><p>Your Zodiac: <b>${zodiac}</b></p><p>✨ Stay positive!</p>;
+        }
+    </script>
+</body>
+</html>
