@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Astrology Profile System</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #1e1e2f;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+        button {
+            cursor: pointer;
+            background: #6c5ce7;
+            color: white;
+        }
+        .box {
+            margin-top: 20px;
+            padding: 20px;
+            background: #2d2d44;
+            border-radius: 10px;
+            display: inline-block;
+            min-width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔮 Astrology Profile System</h1>
+    
+    <input type="text" id="name" placeholder="Enter your name"><br>
+    <input type="number" id="day" placeholder="Day (1-31)">
+    <input type="number" id="month" placeholder="Month (1-12)"><br>
+    
+    <button onclick="generate()">Generate Profile</button>
+
+    <div class="box" id="result">Results will appear here...</div>
+
+    <script>
+    function getZodiac(day, month) {
+        if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return "Aquarius ♒";
+        if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return "Pisces ♓";
+        if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return "Aries ♈";
+        if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return "Taurus ♉";
+        if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return "Gemini ♊";
+        if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return "Cancer ♋";
+        if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return "Leo ♌";
+        if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return "Virgo ♍";
+        if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return "Libra ♎";
+        if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return "Scorpio ♏";
+        if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return "Sagittarius ♐";
+        return "Capricorn ♑";
+    }
+
+    function generate() {
+        let name = document.getElementById("name").value;
+        let day = parseInt(document.getElementById("day").value);
+        let month = parseInt(document.getElementById("month").value);
+        let resultDiv = document.getElementById("result");
+
+        if (!name⠵⠞⠟⠺⠺⠵⠺⠟!month) {
+            resultDiv.innerHTML = "⚠️ Please fill all fields!";
+            return;
+        }
+
+        let zodiac = getZodiac(day, month);
+        let traits = {
+            "Aquarius ♒": "Creative, Independent, Friendly",
+            "Pisces ♓": "Emotional, Kind, Imaginative",
+            "Aries ♈": "Brave, Energetic, Impulsive",
+            "Taurus ♉": "Patient, Loyal, Strong",
+            "Gemini ♊": "Smart, Curious, Talkative",
+            "Cancer ♋": "Sensitive, Caring, Protective",
+            "Leo ♌": "Confident, Leader, Proud",
+            "Virgo ♍": "Organized, Smart, Perfectionist",
+            "Libra ♎": "Balanced, Social, Fair",
+            "Scorpio ♏": "Intense, Mysterious, Strong",
+            "Sagittarius ♐": "Adventurous, Funny, Free",
+            "Capricorn ♑": "Hardworking, Serious, Responsible"
+        };
+
+        let advices = ["Focus on your goals.", "Don't overthink.", "Opportunities are coming.", "Stay positive."];
+        let randomAdvice = advices[Math.floor(Math.random() * advices.length)];
+
+        resultDiv.innerHTML = `
+            <h2>Hello, ${name} ✨</h2>
+            <p><b>Zodiac:</b> ${zodiac}</p>
+            <p><b>Traits:</b> ${traits[zodiac]}</p>
+            <hr>
+            <p>🔮 <b>Horoscope:</b> ${randomAdvice}</p>
+        `;
+    }
+    </script>
+</body>
+</html>
